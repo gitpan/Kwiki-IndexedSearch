@@ -1,0 +1,61 @@
+NAME
+    Kwiki::IndexedSearch - Kwiki Plugin for searching a Kwiki
+
+SYNOPSIS
+    kwiki -add Kwiki::IndexedSearch
+
+DESCRIPTION
+    Kwiki::IndexedSearch is a search plugin for Kwiki that inherits from
+    Brian Ingerson's Kwiki::Search Plugin.
+
+    In addition to the features if Kwiki::Search, Kwiki::IndexedSearch has
+    the following features:
+
+    Indexing
+        Kwiki::IndexedSearch can use any loaded Kwiki::Indexer plugins to
+        search the Kwiki. By using indexed searches, search times can be
+        dramatically reduced on large Kwikis.
+
+    Inline searches
+        Kwiki::IndexedSearch adds the ability to display the results of the
+        search inline on your page.
+
+CONFIGURATION
+    The following fields can be set in config/search_indexed.yaml
+
+    search_index
+         search_index: indexer_regex
+
+        The class_id of the indexer module to use.
+
+    result_template
+         result_template: inline_results.html
+
+        The template to use to display results.
+
+    method
+         methods:
+          search: indexer_regex
+
+        The method parameter is a mapping of keywords to search classes.
+
+        The example specifies that the wafl keyword search will search using
+        the perform_search method of the class indexer_regex (this is the
+        Kwiki::Indexer::Regex module that ships with the Kwiki::Indexer
+        module).
+
+EXAMPLES
+    Using {search:homepage} in your wiki code will result in the list of
+    pages contain the phrase "homepage".
+
+AUTHOR
+    Russell Heilling <chewtoy@s8n.net>
+
+COPYRIGHT
+    Copyright (c) 2004. Russell Heilling. All rights reserved.
+
+    This program is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
+    See http://www.perl.com/perl/misc/Artistic.html
+
